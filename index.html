@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Portifólio</title>
+ 
+</head>
+<body>
+      <header>
+        <nav>
+            <a class="logo" href="index.html">Seja Bem Vindo! </a>
+            <div class="mobile-menu">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+            <ul class="nav-list">
+                <li><a href="">Sobre</a></li>
+                <li><a href="">Currículo</a></li>
+                <li><a href="">Técnologias</a></li>
+                <li><a href="">Galeria</a></li>
+            </ul>
+        </nav>
+      </header>
+      <main>
+
+      </main>
+    <style>
+       /*body
+        {
+             background-image: linear-gradient (45deg, black, #221133);
+
+    
+        }*/
+
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+
+        a
+        {
+            color: #fff;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover
+        {
+            opacity: 0.7;
+        }
+        
+        .logo
+        {
+            font-size: 24px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        nav{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            font-family:  system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
+            Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background: #23232e;
+            height: 8vh;
+        }
+        main
+        {
+            background-image: linear-gradient (45deg, black, #221133);
+            background: no-repeat center center;
+            background-size: cover;
+        }
+        .nav-list
+        {
+            list-style:none;
+            display: flex ;
+        }
+        .nav-list li
+        {
+            letter-spacing: 3px;
+            margin-left: 32px ;
+        }
+        .mobile-menu div{
+            width: 32px;
+            height: 2px;
+            background: #fff;
+            margin: 8px;
+        }
+         .mobile-menu
+         {
+            cursor: pointer;
+            display: none;
+         }
+         @media(max-width:999px)
+         {
+            body{
+                overflow-x: hidden;
+            }
+            .nav-list{
+                position:absolute;
+                top: 8vh;
+                right: 0;
+                width: 50vw;
+                height: 92vh;
+                background: #23232e;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-around;
+                transform: translateX(100%);
+            }
+            .nav-list li{
+                margin-left: 0;
+                opacity: 0;
+            }
+            .mobile-menu{
+                display: block;
+            }
+         }
+         .nav-list.active
+         {
+            transform: translateX(0);
+         }
+    </style>
+    <script>
+        class MobiNavbar{
+            constructor(mobilemenu, navList, navLinks){
+                this.mobilemenu = document.querySelector(mobile-menu);
+                this.navList = document.querySelector(nav-list);
+                this.navLinks = document.querySelectorAll(navLinks)
+                this.activeClass = "active";
+            }
+            addClickEvent(){
+                this.mobilemenu.addEventListenner("click", () => console.log ("Hey"));
+            }
+            init()
+            {
+                if(this.mobilemenu)
+                {
+                    this.addClickEvent();
+                }
+                return this;
+
+            }
+            
+        }
+        const  MobiNavbar= new MobiNavbar
+        (
+            ".mobile-menu",
+            ".navList",
+            ".nav-list li",
+
+        );
+     
+            MobiNavbar.init();
+    </script>
+</body>
+</html>
