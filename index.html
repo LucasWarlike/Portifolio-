@@ -13,6 +13,7 @@
                 <div class="line1"></div>
                 <div class="line2"></div>
                 <div class="line3"></div>
+                <div class="line4"></div>
             </div>
             <ul class="nav-list">
                 <li><a href="">Sobre</a></li>
@@ -26,13 +27,6 @@
 
       </main>
     <style>
-       /*body
-        {
-             background-image: linear-gradient (45deg, black, #221133);
-
-    
-        }*/
-
         *
         {
             margin: 0;
@@ -67,11 +61,10 @@
             background: #23232e;
             height: 8vh;
         }
-        main
+        .main
         {
-            background-image: linear-gradient (45deg, black, #221133);
-            background: no-repeat center center;
-            background-size: cover;
+            background-color: black;
+            
         }
         .nav-list
         {
@@ -110,6 +103,7 @@
                 align-items: center;
                 justify-content: space-around;
                 transform: translateX(100%);
+                transition: transform 0.3s ease-in;
             }
             .nav-list li{
                 margin-left: 0;
@@ -123,22 +117,62 @@
          {
             transform: translateX(0);
          }
+         @keyframes navLinkFade
+         {
+            from{
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            do{
+                opacity: 1;
+                transform: translateX(0);
+            }
+         }
+         .mobile-menu.active.line1{
+            transform: rotate(-45deg) translate(-8px, 8px);
+         }
+         .mobile-menu.active.line2{
+            opacity: 0;
+         }
+         .mobile-menu.active.line3{
+            transform: rotate(45deg) translate(-5px, -7px);
+         }
     </style>
     <script>
-        class MobiNavbar{
-            constructor(mobilemenu, navList, navLinks){
-                this.mobilemenu = document.querySelector(mobile-menu);
-                this.navList = document.querySelector(nav-list);
+        class MobileNavbar{
+            constructor(mobileMenu, navList, navLinks){
+                this.mobileMenu = document.querySelector(mobileMenu);
+                this.navList = document.querySelector(navList);
                 this.navLinks = document.querySelectorAll(navLinks)
                 this.activeClass = "active";
+
+                this.handleClick = this.handleClick.bind(this);
+                
             }
-            addClickEvent(){
-                this.mobilemenu.addEventListenner("click", () => console.log ("Hey"));
+
+            animateLinks(){
+                this.navLinks.forEach((link)=>
+                {
+                    
+                    link.style.animation
+                    ?(link.style.animation = "")
+                    :(link.style.animation = 'navLinkFade 0.5s ease forwards 0.3s')
+                });
             }
+
+            handleClick()
+            {
+                this.navList.classList.toggle(this.activeClass); 
+                this.animateLinks();
+            }
+
+          addClickEvent()
+          {
+            this.mobileMenu.addEventListener("click", this.handleClick);
+          }
             init()
             {
-                if(this.mobilemenu)
-                {
+                if(this.mobileMenu){
                     this.addClickEvent();
                 }
                 return this;
@@ -146,15 +180,15 @@
             }
             
         }
-        const  MobiNavbar= new MobiNavbar
+        const  mobileNavbar = new MobileNavbar
         (
             ".mobile-menu",
-            ".navList",
+            ".nav-list",
             ".nav-list li",
 
         );
      
-            MobiNavbar.init();
+            mobileNavbar.init();
     </script>
 </body>
 </html>
